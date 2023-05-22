@@ -1,9 +1,15 @@
-import './App.css';
-import Navbar from './components/Navbar';
+import "./App.css";
+import Navbar from "./components/Navbar";
+import Main from "./components/Main";
 
 function App() {
   return (
-   <Navbar></Navbar>
+    <>
+      <div className="h-screen">
+        <Navbar />
+        <Main />
+      </div>
+    </>
   );
 }
 
