@@ -6,7 +6,7 @@ function Main() {
   return (
     <div className="h-full">
       <Slider />
-      <div className="grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 w-10/12 mx-auto grid gap-16 ">
+      <div className="grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 w-10/12 mx-auto grid gap-16 mt-4">
         <Item />
         <Item />
         <Item />
