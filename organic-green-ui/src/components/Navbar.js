@@ -1,4 +1,5 @@
 import React from "react";
+import {Link, NavLink} from "react-router-dom";
 
 const Navbar = () => {
   return (
@@ -10,6 +11,9 @@ const Navbar = () => {
         <button className="hover:font-bold hover:-translate-y-1 duration-100 hover:ease-in-out">NEW</button>
         <button className="hover:font-bold hover:-translate-y-1 duration-100 hover:ease-in-out">BEST</button>
         <button className="hover:font-bold hover:-translate-y-1 duration-100 hover:ease-in-out">SPECIAL OFFER</button>
+        <NavLink 
+        to="/register"
+        className="hover:font-bold hover:-translate-y-1 duration-100 hover:ease-in-out">LOG IN</NavLink>
       </div>
     </div>
   );
