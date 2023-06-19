@@ -1,14 +1,15 @@
-package com.ecommerce.organicgreen.model;
-
-import lombok.AllArgsConstructor;
+package com.ecommerce.organicgreen.entity;
+import com.ecommerce.organicgreen.model.Enums;
+import jakarta.persistence.*;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
+@Entity
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
-public class User {
+@Table(name ="user")
+public class UserEntity {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String name;
     private String email;
@@ -19,5 +20,4 @@ public class User {
     private String phone;
     private Enums.UserType userType;
     private String password;
-
 }
