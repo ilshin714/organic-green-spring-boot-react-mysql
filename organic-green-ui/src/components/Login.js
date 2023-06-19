@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
-import UserService from "../services/UserService";
+import { NavLink } from "react-router-dom";
 
 export default function Registration() {
   const [name, setName] = useState('');
@@ -10,19 +9,17 @@ export default function Registration() {
   const [password_confirmation, setPassword_confirmation] = useState('');
   const [users, setUsers] = useState([]);
 
-  const registerClick =(e) => {
+  const loginClick =(e) => {
     e.preventDefault();
-    const user = {name, address, email, password}
-    UserService.saveUser(user)
-    .then((response) => {
-      console.log(response);
-      navigate("/");
-    }).catch((error)=>{
-      console.log(error);
-    })
+    const user = { email, password}
+    // fetch("http://localhost:8080/user/add", {
+    //   method:"POST",
+    //   headers:{"Content-Type":"application/json"},
+    //   body: JSON.stringify(user)
+    // }).then(()=>{
+    //   window.alert("New Student Added");
+    // })
   }
-
-  const navigate = useNavigate();
 
   useEffect(()=> {
     fetch("http://localhost:8080/user/getAll")
@@ -41,23 +38,6 @@ export default function Registration() {
         </div>
         <div className="w-full px-6 py-4 mt-6 overflow-hidden bg-white shadow-md sm:max-w-lg sm:rounded-lg">
           <form>
-            <div>
-              <label
-                htmlFor="name"
-                className="block text-sm font-medium text-gray-700 undefined"
-              >
-                Name
-              </label>
-              <div className="flex flex-col items-start">
-                <input
-                  type="text"
-                  name="name"
-                  value={name}
-                  onChange={(e)=>setName(e.target.value)}
-                  className="block w-full h-10 mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                />
-              </div>
-            </div>
             <div className="mt-4">
               <label
                 htmlFor="email"
@@ -71,23 +51,6 @@ export default function Registration() {
                   name="email"
                   value={email}
                   onChange={(e)=>setEmail(e.target.value)}
-                  className="block w-full h-10 mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                />
-              </div>
-            </div>
-            <div className="mt-4">
-              <label
-                htmlFor="address"
-                className="block text-sm font-medium text-gray-700 undefined"
-              >
-                Address
-              </label>
-              <div className="flex flex-col items-start">
-                <input
-                  type="address"
-                  name="address"
-                  value={address}
-                  onChange={(e)=>setAddress(e.target.value)}
                   className="block w-full h-10 mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                 />
               </div>
@@ -109,41 +72,24 @@ export default function Registration() {
                 />
               </div>
             </div>
-            <div className="mt-4">
-              <label
-                htmlFor="password_confirmation"
-                className="block text-sm font-medium text-gray-700 undefined"
-              >
-                Confirm Password
-              </label>
-              <div className="flex flex-col items-start">
-                <input
-                  type="password"
-                  name="password_confirmation"
-                  value={password_confirmation}
-                  onChange={(e)=>setPassword_confirmation(e.target.value)}
-                  className="block w-full h-10 mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                />
-              </div>
-            </div>
             <a href="#" className="text-xs text-lime-800 hover:underline">
               Forget Password?
             </a>
             <div className="flex items-center mt-4">
               <button 
-              onClick={registerClick}
+              onClick={loginClick}
               className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-lime-700 rounded-md hover:bg-lime-900 focus:outline-none focus:bg-lime-900">
-                Register
+                Login
               </button>
             </div>
           </form>
           <div className="mt-4 text-grey-600">
-            Already have an account?{" "}
+            Dont have an account?{" "}
             <span>
               <NavLink 
-              to="/login"
+              to="/register"
               className="text-lime-800 hover:underline">
-                Log in
+                Register
               </NavLink>
             </span>
           </div>
