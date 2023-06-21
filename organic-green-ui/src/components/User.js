@@ -1,6 +1,12 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom';
 
 const User = ({user, deleteUser}) => {
+    const navigate = useNavigate();
+    const editUser = (e, id)=>{
+        e.preventDefault(); 
+        navigate(`/user/edit/${id}`);
+    }
 
   return (
     <tr key={user.id} className=" text-gray-500 text-left font-medium h-10 tracking-wider">
@@ -17,7 +23,7 @@ const User = ({user, deleteUser}) => {
     <td className="pl-1">
       <div className="text-small text-right pr-2">
         <a
-          href="#"
+          onClick={(e, id) => editUser(e, user.id)}
           className="text-indigo-300 hover:text-indigo-700 px-2"
         >
           Edit

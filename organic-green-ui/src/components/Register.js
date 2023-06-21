@@ -183,16 +183,6 @@ export default function Registration() {
           </div>
         </div>
       </div>
-      <div>
-        {users.map(user=>(
-          <div key={user.id}>
-            ID:{user.id}<br/>
-            Name: {user.name}<br/>
-            Address: {user.address}<br/>
-            Email: {user.email}<br/>
-          </div>
-        ))}
-      </div>
     </div>
 
   );

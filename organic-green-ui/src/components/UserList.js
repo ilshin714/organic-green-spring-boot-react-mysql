@@ -33,6 +33,8 @@ const UserList = () => {
         }
     })
   }
+
+  
   return (
     <>
       <div className="container mx-auto my-8">
@@ -58,7 +60,7 @@ const UserList = () => {
             {!loading && (
               <tbody>
               {users.map((user) => (
-               <User user={user} key={user.id} deleteUser={deleteUser}></User>
+               <User user={user} key={user.id} deleteUser={deleteUser} ></User>
                 ))}
               </tbody>
             )}
