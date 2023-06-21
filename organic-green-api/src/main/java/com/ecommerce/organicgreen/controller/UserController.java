@@ -36,4 +36,18 @@ public class UserController {
         response.put("deleted", deleted);
         return ResponseEntity.ok(response);
     }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<User> getUserById(@PathVariable Long id){
+        User user = null;
+        user = userService.getUserById(id);
+        return ResponseEntity.ok(user);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody User user){
+        user = userService.updateUser(id, user);
+
+        return ResponseEntity.ok(user);
+    }
 }

@@ -5,6 +5,7 @@ import com.ecommerce.organicgreen.model.User;
 import com.ecommerce.organicgreen.repository.UserRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -56,6 +57,33 @@ public class UserServiceImpl implements UserService {
         UserEntity user = userRepository.findById(id).get();
         userRepository.delete(user);
         return true;
+    }
+
+    @Override
+    public User getUserById(Long id) {
+        UserEntity userEntity = userRepository.findById(id).get();
+
+        User user = new User();
+        BeanUtils.copyProperties(userEntity, user);
+        return user;
+    }
+
+    @Override
+    public User updateUser(Long id, User user) {
+        UserEntity userEntity = userRepository.findById(id).get();
+        userEntity.setName(user.getName());
+        userEntity.setUserType(user.getUserType());
+        userEntity.setCity(user.getCity());
+        userEntity.setEmail(user.getEmail());
+        userEntity.setAddress(user.getAddress());
+        userEntity.setPhone(user.getPhone());
+        userEntity.setPostal(user.getPostal());
+        userEntity.setProvince(user.getProvince());
+        userEntity.setPassword(user.getPassword());
+
+        userRepository.save(userEntity);
+
+        return user;
     }
 
 }
